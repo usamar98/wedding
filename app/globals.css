@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-ivory: 0.979 0.015 91;
+  --color-champagne: 0.88 0.06 82;
+  --color-linen: 0.932 0.035 74;
+  --color-ink: 0.145 0.014 62;
+  --color-espresso: 0.205 0.024 52;
+  --color-gold: 0.73 0.109 78;
+  --color-moss: 0.39 0.04 125;
+  --font-display: "Bodoni 72", "Bodoni MT", Didot, "Libre Bodoni", Georgia, serif;
+  --font-sans: "Manrope", "Avenir Next", "Segoe UI", Helvetica, Arial, sans-serif;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: oklch(var(--color-ivory));
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  background:
+    linear-gradient(120deg, oklch(var(--color-ivory)) 0%, oklch(var(--color-linen)) 44%, oklch(var(--color-champagne) / 0.75) 100%);
+  color: oklch(var(--color-ink));
+  font-family: var(--font-sans);
+  text-rendering: geometricPrecision;
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  content: "";
+  opacity: 0.18;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23noise)' opacity='.35'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+::selection {
+  background: oklch(var(--color-gold) / 0.28);
+  color: oklch(var(--color-ink));
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.luxury-container {
+  width: min(100% - 32px, 1440px);
+  margin-inline: auto;
+}
+
+.section-y {
+  padding-block: clamp(5rem, 10vw, 10rem);
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.heading-xl {
+  font-family: var(--font-display);
+  font-size: clamp(3.35rem, 8.8vw, 9.25rem);
+  font-weight: 500;
+  line-height: 0.89;
+  letter-spacing: 0;
+}
+
+.heading-lg {
+  font-family: var(--font-display);
+  font-size: clamp(2.65rem, 6vw, 6.7rem);
+  font-weight: 500;
+  line-height: 0.94;
+  letter-spacing: 0;
+}
+
+.heading-md {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.9vw, 4.2rem);
+  font-weight: 500;
+  line-height: 0.98;
+  letter-spacing: 0;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.image-vignette::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    linear-gradient(180deg, transparent 30%, oklch(var(--color-ink) / 0.48) 100%),
+    linear-gradient(90deg, oklch(var(--color-ink) / 0.2), transparent 48%);
+}
+
+.soft-focus {
+  background:
+    radial-gradient(80% 50% at 20% 16%, oklch(var(--color-champagne) / 0.36), transparent 58%),
+    linear-gradient(125deg, oklch(var(--color-ivory)), oklch(var(--color-linen)) 55%, oklch(var(--color-champagne) / 0.52));
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
